@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Citizens Health Specialty Clinic – Today's Providers</title>
-<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;600;700;800;900&family=Barlow:wght@400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=Barlow+Condensed:wght@400;600;700;800;900&family=Barlow:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
   :root {
     --blue-primary: #075da6;
@@ -38,7 +38,7 @@
   /* ─── HEADER ─────────────────────────────────────── */
   .header {
     background: var(--blue-primary);
-    padding: 52px 60px 44px;
+    padding: 36px 60px 32px;
     flex-shrink: 0;
   }
 
@@ -177,10 +177,10 @@
   }
 
   .card-specialty {
-    font-family: 'Barlow Condensed', sans-serif;
-    font-weight: 700;
-    font-size: 26px;
-    letter-spacing: 0.12em;
+    font-family: 'Oswald', sans-serif;
+    font-weight: 400;
+    font-size: 32px;
+    letter-spacing: 0.08em;
     text-transform: uppercase;
     color: var(--blue-secondary);
     margin-bottom: 8px;
@@ -188,11 +188,11 @@
   }
 
   .card-name {
-    font-family: 'Barlow Condensed', sans-serif;
-    font-weight: 900;
+    font-family: 'Oswald', sans-serif;
+    font-weight: 700;
     color: var(--black);
     line-height: 1.0;
-    letter-spacing: -0.01em;
+    letter-spacing: 0.01em;
   }
 
   .card-badge {
@@ -304,31 +304,21 @@
     font-size: 22px;
   }
 
-  /* ─── CLOCK STRIP ────────────────────────────────── */
   .clock-strip {
-    background: var(--blue-secondary);
-    padding: 14px 60px;
+    background: var(--blue-primary);
+    padding: 18px 60px;
     display: flex;
     align-items: center;
-    justify-content: space-between;
+    justify-content: center;
     flex-shrink: 0;
   }
 
   .clock-time {
-    font-family: 'Barlow Condensed', sans-serif;
-    font-weight: 800;
-    font-size: 38px;
-    color: var(--white);
-    letter-spacing: 0.04em;
-  }
-
-  .clock-tagline {
-    font-family: 'Barlow Condensed', sans-serif;
+    font-family: 'Oswald', sans-serif;
     font-weight: 600;
-    font-size: 22px;
-    color: rgba(255,255,255,0.85);
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
+    font-size: 44px;
+    color: var(--white);
+    letter-spacing: 0.06em;
   }
 
   /* ─── ANIMATION ──────────────────────────────────── */
@@ -702,11 +692,11 @@ function badgeHTML(badge) {
 }
 
 function fontSizeForCount(n) {
-  if (n <= 2) return '62px';
-  if (n <= 4) return '50px';
-  if (n <= 6) return '42px';
-  if (n <= 8) return '34px';
-  return '28px';
+  if (n <= 2) return '96px';
+  if (n <= 4) return '80px';
+  if (n <= 6) return '66px';
+  if (n <= 8) return '54px';
+  return '44px';
 }
 
 function render() {
@@ -719,18 +709,6 @@ function render() {
 
   const headerHTML = `
     <div class="header">
-      <div class="header-logo-row">
-        <svg class="header-logo" viewBox="0 0 120 100" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <circle cx="60" cy="50" r="46" fill="none" stroke="#64c2dc" stroke-width="4"/>
-          <rect x="50" y="22" width="20" height="56" rx="5" fill="#ffffff"/>
-          <rect x="32" y="40" width="56" height="20" rx="5" fill="#ffffff"/>
-        </svg>
-        <div class="header-wordmark">
-          <span class="header-wordmark-main">Citizens Health</span>
-          <span class="header-wordmark-sub">Specialty Clinic</span>
-        </div>
-      </div>
-      <div class="header-divider"></div>
       <div class="header-label">Providers Seeing Patients Today</div>
       <div class="header-date">${fmt.dow}, ${fmt.month} ${fmt.day}</div>
     </div>
@@ -772,24 +750,13 @@ function render() {
     `;
   }
 
-  const footerHTML = `
+  const clockHTML = `
     <div class="clock-strip">
       <span class="clock-time" id="clock">--:-- --</span>
-      <span class="clock-tagline">Right Here in Colby</span>
-    </div>
-    <div class="footer">
-      <div class="footer-call">
-        <span class="footer-call-label">To Schedule, Call</span>
-        <span class="footer-call-number">785-460-1223</span>
-      </div>
-      <div class="footer-address">
-        <strong>Citizens Health Specialty Clinic</strong>
-        1525 S. Franklin Ave. · Colby, KS 67701
-      </div>
     </div>
   `;
 
-  screen.innerHTML = headerHTML + bodyHTML + footerHTML;
+  screen.innerHTML = headerHTML + bodyHTML + clockHTML;
 
   updateClock();
   setInterval(updateClock, 30000);
